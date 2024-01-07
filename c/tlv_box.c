@@ -30,6 +30,7 @@ tlv_box_t *tlv_box_create()
     return box;
 }
 
+// 把buffer的内容转成tlv_box_t结构
 tlv_box_t *tlv_box_parse(unsigned char *buffer, int buffersize)
 {
     tlv_box_t *box = tlv_box_create();
@@ -148,6 +149,7 @@ int tlv_box_put_object(tlv_box_t *box, int type, tlv_box_t *object)
     return tlv_box_putobject(box, type, tlv_box_get_buffer(object), tlv_box_get_size(object));
 }
 
+// 对box进行序列化，并保存到m_serialized_buffer 
 int tlv_box_serialize(tlv_box_t *box)
 {
     if (box->m_serialized_buffer != NULL) {
